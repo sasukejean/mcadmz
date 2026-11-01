@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.+', changing: true
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle'
+
+version = '0.1.0'
+group = 'com.mcadmz'
+archivesBaseName = 'mcadmz-1.20.1'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { mcadmz { source sourceSets.main } }
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    flatDir { dir 'libs' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    // Comes Alive: copie o jar para libs/ com o nome mca-7.7.1.jar
+    compileOnly fg.deobf('local:mca:7.7.1')
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+jar.finalizedBy('reobfJar')

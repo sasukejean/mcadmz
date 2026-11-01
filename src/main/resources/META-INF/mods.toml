@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "GPL-3.0"
+
+[[mods]]
+modId = "mcadmz"
+version = "0.1.0"
+displayName = "Comes Alive x DragonMineZ Bridge"
+description = '''
+NPCs do Comes Alive com stats/TP/tecnicas estilo DragonMineZ, varias esposas e heranca de status.
+'''
+
+[[dependencies.mcadmz]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.mcadmz]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.mcadmz]]
+modId = "mca"
+mandatory = true
+versionRange = "[0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.mcadmz]]
+modId = "dragonminez"
+mandatory = false
+versionRange = "[0,)"
+ordering = "AFTER"
+side = "BOTH"
